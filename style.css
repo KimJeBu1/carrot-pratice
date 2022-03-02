@@ -1,0 +1,18 @@
+/* global */
+body {
+  background-color: black;
+}
+
+.background {
+  width: 50%;
+  height: 50%;
+  border-radius: 3%;
+  margin: auto;
+  display: block;
+  margin-top: 50px;
+}
+
+.stop-btn {
+  width: 50%;
+  height: 50%;
+}
