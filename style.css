@@ -40,7 +40,7 @@ root {
 }
 
 body {
-  /* background-color: #000000; */
+  background-color: #000000;
   font-family: 'Open Sans', sans-serif;
   /* margin: 0; */
 }
@@ -96,19 +96,61 @@ p {
 
 
 
+
 .background {
   width: 50%;
   height: 50%;
-  border-radius: 3%;
+  border-radius: 25px;
   margin: auto;
   display: block;
   margin-top: 50px;
 }
 
 .button {
-  background-color: var(--color-yellow);
+  display: flex;
+  flex-direction: column;
+  /* background-color: bisque; */
   /* width: 200px;
   height: 200px; */
   /* font-size: 200px; */
   /* margin: auto; */
+}
+
+.start-btn {
+  margin: auto;
+  width: 50px;
+  height: 50px;
+  background-color: bisque;
+  font-size: 32px;
+  border-radius: 10px;
+  position: relative;
+  bottom: 255px; 
+}
+
+.stop-btn {
+  margin: auto;
+  width: 50px;
+  height: 50px;
+  background-color: bisque;
+  font-size: 32px;
+  border-radius: 10px;
+  position: relative;
+  bottom: 80%; 
+}
+
+.return-btn {
+  margin: auto;
+  width: 50px;
+  height: 50px;
+  background-color: bisque;
+  font-size: 32px;
+  border-radius: 10px;
+  position: relative;
+  bottom: 205px; 
+}
+
+
+
+.win, .lost, .replay{
+  color: #ffffff;
 }
