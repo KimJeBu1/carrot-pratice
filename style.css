@@ -108,12 +108,10 @@ p {
 
 .button {
   display: flex;
+  /* position: absolute; */
   flex-direction: column;
-  /* background-color: bisque; */
-  /* width: 200px;
-  height: 200px; */
-  /* font-size: 200px; */
-  /* margin: auto; */
+  /* flex-wrap: wrap; */
+  /* flex-direction: row; */
 }
 
 .start-btn {
@@ -123,8 +121,9 @@ p {
   background-color: bisque;
   font-size: 32px;
   border-radius: 10px;
-  position: relative;
-  bottom: 255px; 
+  /* position: fixed; */
+  left: 250px;
+  /* bottom: 255px;  */
 }
 
 .stop-btn {
@@ -134,8 +133,8 @@ p {
   background-color: bisque;
   font-size: 32px;
   border-radius: 10px;
-  position: relative;
-  bottom: 80%; 
+  position: absolute;
+  top: 50%; 
 }
 
 .return-btn {
@@ -145,8 +144,9 @@ p {
   background-color: bisque;
   font-size: 32px;
   border-radius: 10px;
-  position: relative;
-  bottom: 205px; 
+  position: absolute;
+  bottom: 70%; 
+  left:50%;
 }
 
 
