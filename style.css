@@ -98,7 +98,7 @@ p {
 
 
 .background {
-  width: 50%;
+  width: 750px;
   height: 50%;
   border-radius: 25px;
   margin: auto;
@@ -149,8 +149,31 @@ p {
   left:50%;
 }
 
-
-
 .win, .lost, .replay{
   color: #ffffff;
+}
+
+.timer {
+  margin: auto;
+  width: 120px;
+  height: 25px;
+  background-color: #eeeeee;
+  border-radius: 5px;
+  border: 4px solid black;
+}
+
+.count {
+  margin: auto;
+  width: 45px;
+  height: 45px;
+  background-color: rgb(238, 137, 14);
+  border-radius: 50%;
+  border: 4px solid black;
+}
+
+.bottom-window {
+  margin: auto;
+  width: 400px;
+  height: 200px;
+  background-color: yellowgreen;
 }
