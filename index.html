@@ -12,12 +12,13 @@
 </head>
 <body>
 <!-- play window -->
-<div class="play-window">
+<section class="PlayWindow">
+<article class="play-window__container">
     <img src="img/background.png" 
     alt="TestImg"
     class="background"
     > 
-    <div class="button">
+    <span class="button">
     <!-- start button -->
     <button class="start-btn">
         <i class="fa-solid fa-play"></i>
@@ -25,12 +26,8 @@
     <!-- stop button -->
     <button class="stop-btn">
         <i class="fa-solid fa-stop"></i>
-    </button>
-        <!-- return button -->
-    <button class="return-btn">
-        <i class="fa-solid fa-arrow-rotate-left"></i>
-    </button>
-    </div>  
+    </button>   
+    </span>  
     <!-- Timer -->
     <div class="timer"></div>
     <!-- Count -->
@@ -51,11 +48,15 @@
         </div>
         <div class="replay">
             <p>REPLAY❓</p>
-        </div>  
+        </div> 
+        <!-- return button -->
+    <button class="return-btn">
+        <i class="fa-solid fa-arrow-rotate-left"></i>
+    </button> 
     </div>
 
     
-</div>
-    
+</article>
+</section>
 </body>
 </html>

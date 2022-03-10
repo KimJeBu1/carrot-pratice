@@ -98,11 +98,11 @@ p {
 
 
 .background {
-  width: 750px;
-  height: 50%;
+  /* width: 750px;
+  height: 50%; */
   border-radius: 25px;
   margin: auto;
-  display: block;
+  position: absolute;
   margin-top: 50px;
 }
 
@@ -121,9 +121,9 @@ p {
   background-color: bisque;
   font-size: 32px;
   border-radius: 10px;
-  /* position: fixed; */
-  left: 250px;
-  /* bottom: 255px;  */
+  position: sticky;
+  left: 50%;
+  bottom: 50%;  
 }
 
 .stop-btn {
@@ -138,15 +138,16 @@ p {
 }
 
 .return-btn {
-  margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* margin: auto; */
   width: 50px;
   height: 50px;
   background-color: bisque;
   font-size: 32px;
   border-radius: 10px;
-  position: absolute;
-  bottom: 70%; 
-  left:50%;
 }
 
 .win, .lost, .replay{
@@ -156,7 +157,7 @@ p {
 .timer {
   margin: auto;
   width: 120px;
-  height: 25px;
+  height: 35px;
   background-color: #eeeeee;
   border-radius: 5px;
   border: 4px solid black;
@@ -174,6 +175,8 @@ p {
 .bottom-window {
   margin: auto;
   width: 400px;
-  height: 200px;
+  height: 140px;
   background-color: yellowgreen;
+  border-radius: 7px;
+
 }
