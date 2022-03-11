@@ -1,182 +1,100 @@
-/* global */
-root {
-  /* Color */
-  --color-white: #ffffff;
-  --color-light-white: #eeeeee;
-  --color-dark-white: #bdbdbd;
-  --color-pink: #fe918d;
-  --color-dark-pink: #ff6863;
-  --color-black: #4d4d4d;
-  --color-dark-grey: #4d4d4d;
-  --color-grey: #616161;
-  --color-light:-grey: #7c7979;
-  --color-blue: #73aace;
-  --color-yellow: #fff7d1;
-  --color-orange: #feb546;
-  --color-black: #000000;
-
-  /* Font size */
-  --font-large: 48px;
-  --font-medium: 28px;
-  --font-regular: 18px;
-  --font-small: 16px;
-  --font-micro: 14px;
-
-  /* Font weight */
-  --weight-bold: 700;
-  --weight-semi-bold: 600;
-  --weight-regular: 400;
-
-  /* Size */
-  --size-border-radius: 4px;
-
-  /* Annimation */
-  --animation-duration: 300ms;
-}
-
-/* Universal tags */
-* {
-  box-sizing: border-box;
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
 }
 
 body {
-  background-color: #000000;
-  font-family: 'Open Sans', sans-serif;
-  /* margin: 0; */
+  text-align: center;
 }
 
-a {
-  text-decoration: none;
-  color: var(--color-white);
-}
-
-ul {
-  padding-left: 0;
-}
-
-li {
-  list-style: none;
-}
-
-/* button {
-  background-color: transparent;
-  cursor: pointer;
-  border: none;
-  outline: none;
-} */
-
-/* Typography */
-h1 {
-  font-size: var(--font-large);
-  font-weight: var(--weight-bold);
-  color: var(--color-black);
-  margin: 16px 0px;
-}
-
-h2 {
-  font-size: var(--font-medium);
-  font-weight: var(--weight-semi-bold);
-  color: var(--color-black);
-  margin: 8px 0;
-}
-
-h3 {
-  font-size: var(--font-regular);
-  font-weight: var(--font-regular);
-  color: var(--color-black);
-  margin: 8px 0;
-}
-
-p {
-  font-size: var(--font-regular);
-  font-weight: var(--font-regular);
-  color: var(--color-light-white);
-  /* margin: 4px 0; */
-}
-
-
-
-
-.background {
-  /* width: 750px;
-  height: 50%; */
-  border-radius: 25px;
-  margin: auto;
-  position: absolute;
-  margin-top: 50px;
-}
-
-.button {
+.game {
   display: flex;
-  /* position: absolute; */
   flex-direction: column;
-  /* flex-wrap: wrap; */
-  /* flex-direction: row; */
-}
-
-.start-btn {
+  width: 800px;
+  height: 500px;
   margin: auto;
-  width: 50px;
-  height: 50px;
-  background-color: bisque;
-  font-size: 32px;
-  border-radius: 10px;
-  position: sticky;
-  left: 50%;
-  bottom: 50%;  
+  background: url(img/background.png) center/cover;
+  border-radius: 20px;
 }
 
-.stop-btn {
-  margin: auto;
-  width: 50px;
-  height: 50px;
-  background-color: bisque;
-  font-size: 32px;
-  border-radius: 10px;
-  position: absolute;
-  top: 50%; 
+.game__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
 }
 
-.return-btn {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  /* margin: auto; */
-  width: 50px;
-  height: 50px;
-  background-color: bisque;
-  font-size: 32px;
-  border-radius: 10px;
-}
-
-.win, .lost, .replay{
-  color: #ffffff;
-}
-
-.timer {
-  margin: auto;
-  width: 120px;
-  height: 35px;
-  background-color: #eeeeee;
-  border-radius: 5px;
+.game__button {
+  width: 60px;
+  height: 60px;
+  background-color: wheat;
   border: 4px solid black;
+  font-size: 24px;
+  transition: transform 300ms ease-in;
 }
 
-.count {
-  margin: auto;
-  width: 45px;
-  height: 45px;
-  background-color: rgb(238, 137, 14);
+.game__button:hover {
+  transform: scale(1.1);
+}
+
+.game__timer {
+  width: 100px;
+  background-color: white;
+  text-align: center;
+  border: 5px solid black;
+  font-size: 32px;
+  border-radius: 20px;
+  margin-top: 8px;
+}
+
+.game__score {
+  text-align: center;
+  width: 50px;
+  height: 50px;
+  margin-top: 8px;
+  font-size: 46px;
   border-radius: 50%;
-  border: 4px solid black;
+  border: 3px solid black;
+  background-color: darksalmon;
+  color: white;
 }
 
-.bottom-window {
-  margin: auto;
-  width: 400px;
-  height: 140px;
-  background-color: yellowgreen;
-  border-radius: 7px;
+.game__field {
+  width: 100%;
+  height: 100%;
+  margin-top: 40px;
+  /* background-color: blue; */
+  opacity: 0.4;
+}
 
+.pop-up {
+  display: block;
+  width: 400px;
+  height: 120px;
+  margin: auto;
+  padding: 20px;
+  background-color: #00000090; /* 이렇게 하면 pop-up전체가 아니라 background만 투명도가 설정됨*/
+  border-radius: 20px;
+  color: white;
+  text-align: center;
+  transform: translateY(-150%);
+}
+
+.pop-up--hide {
+  display: none;
+}
+
+.pop-up__refresh {
+  width: 60px;
+  height: 60px;
+  font-size: 24px;
+  background-color: wheat;
+  border: 2px solid black;
+  border-radius: 50%;
+}
+
+.pop-up__message {
+  display: block;
+  font-size: 38px;
 }

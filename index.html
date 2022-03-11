@@ -9,54 +9,26 @@
     <script src="https://kit.fontawesome.com/31aaae7bdf.js" crossorigin="anonymous"></script>
     </script>
     <link rel="stylesheet" href="style.css">
+    <script src="main.js"></script>
 </head>
 <body>
 <!-- play window -->
-<section class="PlayWindow">
-<article class="play-window__container">
-    <img src="img/background.png" 
-    alt="TestImg"
-    class="background"
-    > 
-    <span class="button">
-    <!-- start button -->
-    <button class="start-btn">
-        <i class="fa-solid fa-play"></i>
-    </button>
-    <!-- stop button -->
-    <button class="stop-btn">
-        <i class="fa-solid fa-stop"></i>
-    </button>   
-    </span>  
-    <!-- Timer -->
-    <div class="timer"></div>
-    <!-- Count -->
-    <div class="count"></div>
-    <!-- Create Element -->
-    <div class="create-random">
-        <div class="carrot-img"></div>
-        <div class="bug-img"></div>
-    </div>
-    <!-- Win & Lost & Replay -->
-    <div class="bottom-window">
-        
-        <div class="win">
-            <p>YOU WON🎉</p>
-        </div>
-        <div class="lost">
-            <p>YOU LOST🎃</p>
-        </div>
-        <div class="replay">
-            <p>REPLAY❓</p>
-        </div> 
-        <!-- return button -->
-    <button class="return-btn">
-        <i class="fa-solid fa-arrow-rotate-left"></i>
-    </button> 
-    </div>
-
-    
-</article>
+<section class="game">
+    <header class="game__header">
+        <button class="game__button">
+            <i class="fa-solid fa-play"></i>
+        </button>
+        <span class="game__timer">0:0</span>
+        <span class="game__score">9</span>
+    </header>
+    <section class="game__field">
+    </section>
 </section>
+<section class="pop-up pop-up--hide">
+    <button class="pop-up__refresh">
+        <i class="fa-solid fa-arrow-rotate-left"></i>
+    </button>
+    <span class="pop-up__message">Hello</span>
+</section>  
 </body>
 </html>
