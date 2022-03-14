@@ -82,7 +82,8 @@ body {
   transform: translateY(-150%);
 }
 
-.pop-up--hide {
+.pop-up--hide,
+.game__field--hide {
   display: none;
 }
 
