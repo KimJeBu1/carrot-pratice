@@ -1,8 +1,6 @@
 'use strict'
 
-function show() {
-    document.querySelector('bug1')
-    .style.display = "block";
-
-    
-}
+const show = document.querySelector('.game__button');
+show.addEventListener('click', (event) => {
+    event.target.classList.remove('.game__field--hide')
+})
