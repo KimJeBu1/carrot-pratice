@@ -83,7 +83,7 @@ body {
 }
 
 .pop-up--hide,
-.game__field--hide {
+.game__field {
   display: none;
 }
 
