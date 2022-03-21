@@ -8,11 +8,11 @@ const fieldRect = field.getBoundingClientRect();
 const gameBtn = document.querySelector('.game__button'); 
 const gameTimer = document.querySelector('.game__timer');
 const gameScore = document.querySelector('.game__score');
-const sec=0;
+const MyInterval = setInterval(startGameTimer, 1000);//+
 
 let started = false; //게임이 시작되었는지 확인 하는 변수
 let score = 0;
-let timer = undefined;
+let i = 0;//+
 
 
 
@@ -38,12 +38,9 @@ function stopGame() {
 }
 
 function startGameTimer() {
-    gameTimer.innerHTML = "00:00"
-    sec = %60;
-    const timer = setInterval(function {
-
-    })
-}
+    document.querySelector('.game__timer').innerHTML = i;
+    i++
+} 
 
 function showStopButton(){
     const icon = gameBtn.querySelector('.fa-play');
