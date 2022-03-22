@@ -8,11 +8,12 @@ const fieldRect = field.getBoundingClientRect();
 const gameBtn = document.querySelector('.game__button'); 
 const gameTimer = document.querySelector('.game__timer');
 const gameScore = document.querySelector('.game__score');
-const MyInterval = setInterval(startGameTimer, 1000);//+
+const MyInterval = setInterval(startGameTimer, 100);//+
 
 let started = false; //게임이 시작되었는지 확인 하는 변수
+let timer = undefined;
 let score = 0;
-let i = 0;//+
+
 
 
 
@@ -23,23 +24,29 @@ gameBtn.addEventListener('click', () => {
         startGame();
         startGameTimer();
     }
-    started = !started; //started의 반대 boolen이 할당
+    // started = !started; //started의 반대 boolen이 할당
 });
 
 function startGame() {
     initGame();
     showStopButton();
     showTimerAndScore();
-    startGameTimer();
+    // startGameTimer();
 }
 
 function stopGame() {
 
 }
-
+let i = 0;//+
 function startGameTimer() {
-    document.querySelector('.game__timer').innerHTML = i;
-    i++
+    
+    document.querySelector('.game__timer');
+   
+    MyInterval
+    i++;
+    // for (let i=0; i < 11; i++){
+    // i++
+    // }
 } 
 
 function showStopButton(){
