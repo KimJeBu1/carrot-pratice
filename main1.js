@@ -2,18 +2,17 @@
 
 const  CARROT_SIZE = 80;
 const CARROT_COUNT = 5;
-const BUG_COUNT = 5
+const BUG_COUNT = 5;
+const GAME_DURATION_SEC = 5;
 const field = document.querySelector('.game__field');
 const fieldRect = field.getBoundingClientRect();
 const gameBtn = document.querySelector('.game__button'); 
 const gameTimer = document.querySelector('.game__timer');
 const gameScore = document.querySelector('.game__score');
-const MyInterval = setInterval(startGameTimer, 100);//+
 
 let started = false; //게임이 시작되었는지 확인 하는 변수
-let timer = undefined;
 let score = 0;
-
+// let timer = undefined;
 
 
 
@@ -21,33 +20,23 @@ gameBtn.addEventListener('click', () => {
     if(started) {
         stopGame();
     } else {
-        startGame();
-        startGameTimer();
+        startGame()
     }
-    // started = !started; //started의 반대 boolen이 할당
+    started = !started; //started의 반대 boolen이 할당
 });
 
 function startGame() {
     initGame();
     showStopButton();
     showTimerAndScore();
-    // startGameTimer();
+    startGameTimer();
 }
 
 function stopGame() {
-
-}
-let i = 0;//+
-function startGameTimer() {
+    const stop = document.querySelector('.fa-stop');
+    stop.classList.remove('pop-up--hid');
     
-    document.querySelector('.game__timer');
-   
-    MyInterval
-    i++;
-    // for (let i=0; i < 11; i++){
-    // i++
-    // }
-} 
+}
 
 function showStopButton(){
     const icon = gameBtn.querySelector('.fa-play');
@@ -58,6 +47,24 @@ function showStopButton(){
 function showTimerAndScore() {
     gameTimer.style.visibility = 'visible';
     gameScore.style.visibility = 'visible';
+}
+
+function startGameTimer() {
+    let remainingTimeSec = GAME_DURATION_SEC;//남아있는 시간동안 계속 interval가 발생될수 있도록
+    updateTimerText(remainingTimeSec);
+    timer = setInterval(() => {
+        if(remainingTimeSec <= 0) {
+            clearInterval(timer)
+            return;
+        }
+        updateTimerText(--remainingTimeSec)
+    }, 1000);
+}
+
+function updateTimerText(time) {
+    const minutes = Math.floor(time / 60);
+    const seconds = time % 60;
+    gameTimer.innerText = `${minutes}:${seconds}`;
 }
 
 function initGame() {
