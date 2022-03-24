@@ -12,7 +12,7 @@ const gameScore = document.querySelector('.game__score');
 
 let started = false; //게임이 시작되었는지 확인 하는 변수
 let score = 0;
-// let timer = undefined;
+let timer = undefined;
 
 
 
@@ -33,7 +33,7 @@ function startGame() {
 }
 
 function stopGame() {
-    const stop = document.querySelector('.fa-stop');
+    const stop = document.querySelector('pop-up pop-up--hide');
     stop.classList.remove('pop-up--hid');
     
 }
