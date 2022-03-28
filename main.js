@@ -18,7 +18,7 @@ let started = false; //게임이 시작되었는지 확인 하는 변수
 let score = 0;
 let timer = undefined;
 
-
+field.addEventListener('click',onFieldClick); //field.addEventListener('click',event => (event));
 
 gameBtn.addEventListener('click', () => {
     if(started) {
@@ -63,10 +63,11 @@ function startGameTimer() {
     updateTimerText(remainingTimeSec);
     timer = setInterval(() => {
         if(remainingTimeSec <= 0) {
-            clearInterval(timer)
+            clearInterval(timer);
+            finishGame(CARROT_COUNT === score);
             return;
         }
-        updateTimerText(--remainingTimeSec)
+        updateTimerText(--remainingTimeSec);
     }, 1000);
 }
 
@@ -95,6 +96,36 @@ function initGame() {
     addItem('bug', BUG_COUNT, 'img/bug.png')
 }
 
+function onFieldClick(event) {
+    if(!started) {
+        return;
+    }
+    const target = event.target; //내가 클릭한것이 벌레인지 당근인지 확인을하는것
+    if(target.matches('.carrot')) {//matches는 css 셀렉터가 해당하는지 확인하는 것
+        target.remove();
+        score++;
+        updateScoreBoard();
+        if(score === CARROT_COUNT) {
+            finishGame(true)
+        }
+    } else if(target.matches('.bug')) {
+        stopGameTimer();
+        finishGame(false)
+
+    }
+
+function finishGame(win) {
+    started = false;
+    hideGameButton();
+    showPopUpWithText(win? 'YOU WIN🎉' : 'YOU LOST💔');
+
+}   
+
+function updateScoreBoard() {
+    gameScore.innerText = CARROT_COUNT - score;
+}    
+
+}
 function addItem(className, count, imgPath) {
     const x1 = 0;
     const y1 = 0;
