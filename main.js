@@ -14,6 +14,12 @@ const popUp = document.querySelector(".pop-up");
 const popUpText = document.querySelector('.pop-up__message');
 const popUpRefresh = document.querySelector('.pop-up__refresh');
 
+const carrotSound = new Audio('./sound/carrot_pull.mp3');
+const alertSound = new Audio('./sound/alert.wav');
+const bgSound = new Audio('./sound/bg.mp3');
+const bugSound = new Audio('./sound/bug_pull.mp3');
+const winSound = new Audio('./sound/game_win.mp3');
+
 let started = false; //게임이 시작되었는지 확인 하는 변수
 let score = 0;
 let timer = undefined;
@@ -33,24 +39,40 @@ popUpRefresh.addEventListener('click', () => {
     hidePopUp();
 })
 
+function playSound(sound) {
+    sound.currentTime = 0;
+    sound.play();
+} 
+
+function stopSound(sound) {
+    sound.pause();
+}
+
 function startGame() {
     started = true;
     initGame();
     showStopButton();
     showTimerAndScore();
     startGameTimer();
+    playSound(bgSound);
 }
 
 function stopGame() {
     started = false;
     stopGameTimer();
     hideGameButton();
-    showPopUpWithText('REPLAY?😘')
+    showPopUpWithText('REPLAY?😘');
+    stopSound(bgSound);
 }
 
 function finishGame(win) {
     started = false;
     hideGameButton();
+    if (win) {
+        playSoud(winSound);
+    } else {
+        playSound(bugSound);
+    }
     showPopUpWithText(win? 'YOU WIN🎉' : 'YOU LOST💔');
 } 
 
@@ -118,6 +140,7 @@ function onFieldClick(event) {
     if(target.matches('.carrot')) {//matches는 css 셀렉터가 해당하는지 확인하는 것
         target.remove();
         score++;
+        playSound(carrotSound);
         updateScoreBoard();
         if(score === CARROT_COUNT) {
             finishGame(true)
@@ -125,8 +148,8 @@ function onFieldClick(event) {
     } else if(target.matches('.bug')) {
         stopGameTimer();
         finishGame(false)
-
     }
+
 
 function updateScoreBoard() {
     gameScore.innerText = CARROT_COUNT - score;
