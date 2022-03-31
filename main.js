@@ -14,6 +14,12 @@ const popUp = document.querySelector(".pop-up");
 const popUpText = document.querySelector('.pop-up__message');
 const popUpRefresh = document.querySelector('.pop-up__refresh');
 
+
+const carrotSound = new Audio('./sound/carrot_pull.mp3');
+const alertSound = new Audio('./sound/alert.wav');
+const bgSound = new Audio('./sound/bg.mp3');
+const bugSound = new Audio('./sound/bug_pull.mp3');
+const winSound = new Audio('./sound/game_win.mp3');
 let started = false; //게임이 시작되었는지 확인 하는 변수
 let score = 0;
 let timer = undefined;
@@ -39,6 +45,8 @@ function startGame() {
     showStopButton();
     showTimerAndScore();
     startGameTimer();
+    playSound(bgSound);
+    
 }
 
 function stopGame() {
@@ -46,11 +54,29 @@ function stopGame() {
     stopGameTimer();
     hideGameButton();
     showPopUpWithText('REPLAY?😘')
+    playSound(alertSound);
+    stopSound(bgSound);
+}
+
+function playSound(sound) {
+    sound.currentTime = 0;
+    sound.play();
+}
+
+function stopSound(sound) {
+    sound.pause();
 }
 
 function finishGame(win) {
     started = false;
     hideGameButton();
+    if (win) {
+        playSound(winSound);
+    } else {
+        playSound(bugSound);
+    }
+    stopGameTimer();
+    stopSound(bgSound);
     showPopUpWithText(win? 'YOU WIN🎉' : 'YOU LOST💔');
 } 
 
@@ -102,10 +128,11 @@ function hidePopUp() {
 }
 
 function initGame() {
+    score = 0;
     field.innerHTML = '';
     gameScore.innerText = CARROT_COUNT;
     //벌레와 당근을 생성한뒤 field에 추가해줌
-    console.log(fieldRect);
+    // console.log(fieldRect);
     addItem('carrot', CARROT_COUNT, 'img/carrot.png');
     addItem('bug', BUG_COUNT, 'img/bug.png')
 }
@@ -118,14 +145,13 @@ function onFieldClick(event) {
     if(target.matches('.carrot')) {//matches는 css 셀렉터가 해당하는지 확인하는 것
         target.remove();
         score++;
+        playSound(carrotSound);
         updateScoreBoard();
         if(score === CARROT_COUNT) {
             finishGame(true)
         }
     } else if(target.matches('.bug')) {
-        stopGameTimer();
         finishGame(false)
-
     }
 
 function updateScoreBoard() {
