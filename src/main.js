@@ -6,7 +6,7 @@ import * as sound from './sound.js';
 
 const CARROT_COUNT = 20;
 const BUG_COUNT = 20;
-const GAME_DURATION_SEC = 20;
+const GAME_DURATION_SEC = 5;
 
 
 const gameBtn = document.querySelector('.game__button');
