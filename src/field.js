@@ -1,25 +1,25 @@
 'use strict';
+import * as sound from './sound.js';
 
-const carrotSound = new Audio('./sound/carrot_pull.mp3');
+const CARROT_SIZE = 80;
 
 export default class Field {
     constructor(carrotCount, bugCount) {
         this.carrotCount = carrotCount;
         this.bugCount = bugCount;
         this.field = document.querySelector('.game__field');
-        this.fieldRect = field.getBoundingClientRect();
+        this.fieldRect = this.field.getBoundingClientRect();
         this.field.addEventListener('click', this.onClick);
     }
 
     setClickListener(onItemClick) {
         this.onItemClick = onItemClick;
-
     }
     
     init() {
         this.field.innerHTML = '';
-        this._addItem('carrot', CARROT_COUNT, 'img/carrot.png');
-        this._addItem('bug', BUG_COUNT, 'img/bug.png');
+        this._addItem('carrot', this.carrotCount, 'img/carrot.png');
+        this._addItem('bug', this.bugCount, 'img/bug.png');
     }
 
     _addItem(className, count, imgPath) {
@@ -44,7 +44,7 @@ export default class Field {
         const target = event.target; //내가 클릭한것이 벌레인지 당근인지 확인을하는것
         if (target.matches('.carrot')) { //matches는 css 셀렉터가 해당하는지 확인하는 것
           target.remove();
-          playSound(carrotSound);
+          sound.playCarrot();
           this.onItemClick && this.onItemClick('carrot');
         } else if (target.matches('.bug')) {
             this.onItemClick && this.onItemClick('bug');
@@ -52,7 +52,9 @@ export default class Field {
         }
     }
 
-    function playSound(sound) {
-        sound.currentTime = 0;
-        sound.play();
-      }
+    function randomNumber(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+    
+
+  
