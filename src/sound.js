@@ -22,11 +22,11 @@ export function playWin() {
 }
 
 export function playBackground() {
-    stopSound(bgSound);
+    playSound(bgSound);
 }
 
 export function stopBackground() {
-    playSound(bgSound);
+    stopSound(bgSound);
 }
 
 function playSound(sound) {
