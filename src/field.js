@@ -44,7 +44,7 @@ export default class Field {
         const target = event.target; //내가 클릭한것이 벌레인지 당근인지 확인을하는것
         if (target.matches('.carrot')) { //matches는 css 셀렉터가 해당하는지 확인하는 것
           target.remove();
-          sound.playCarrot();
+          sound.playCarrot();+
           this.onItemClick && this.onItemClick('carrot');
         } else if (target.matches('.bug')) {
             this.onItemClick && this.onItemClick('bug');
