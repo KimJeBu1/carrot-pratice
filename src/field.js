@@ -1,6 +1,7 @@
 'use strict';
 import * as sound from './sound.js';
 
+const carrotSound = new Audio('./sound/carrot_pull.mp3');
 const CARROT_SIZE = 80;
 
 export default class Field {
@@ -33,7 +34,7 @@ export default class Field {
           item.setAttribute('src', imgPath);
           item.style.position = 'absolute';
           const x = randomNumber(x1, x2);
-          const y = randomNumber(y1, y2);
+          const y = randomNumber(y1, y2); 
           item.style.left = `${x}px`;
           item.style.top = `${y}px`;
           this.field.appendChild(item);
@@ -44,7 +45,7 @@ export default class Field {
         const target = event.target; //내가 클릭한것이 벌레인지 당근인지 확인을하는것
         if (target.matches('.carrot')) { //matches는 css 셀렉터가 해당하는지 확인하는 것
           target.remove();
-          sound.playCarrot();+
+          sound.playCarrot();
           this.onItemClick && this.onItemClick('carrot');
         } else if (target.matches('.bug')) {
             this.onItemClick && this.onItemClick('bug');

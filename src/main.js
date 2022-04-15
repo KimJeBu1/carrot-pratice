@@ -1,13 +1,12 @@
 'use strict';
+
 import PopUp from './popup.js';
 import Field from './field.js';
 import * as sound from './sound.js';
 
-
-const CARROT_COUNT = 20;
-const BUG_COUNT = 20;
-const GAME_DURATION_SEC = 5;
-
+const CARROT_COUNT = 3;
+const BUG_COUNT = 3;
+const GAME_DURATION_SEC = 4;
 
 const gameBtn = document.querySelector('.game__button');
 const timerIndicator = document.querySelector('.game__timer');
@@ -19,8 +18,8 @@ let timer = undefined;
 
 const gameFinishBanner = new PopUp();
 gameFinishBanner.setClickListener(() => {
-  startGame();
-});
+  startGame()
+})
 
 const gameField = new Field(CARROT_COUNT, BUG_COUNT);
 gameField.setClickListener(onItemClick);
@@ -29,18 +28,17 @@ function onItemClick(item) {
   if (!started) {
     return;
   }
-  if (item === 'carrot') { //matches는 css 셀렉터가 해당하는지 확인하는 것
-    score++;
+  if (item === '.carrot') { //matches는 css 셀렉터가 해당하는지 확인하는 것
+    score++; 
     updateScoreBoard();
     if (score === CARROT_COUNT) {
       finishGame(true);
     }
-  } else if (item ==='bug') {
+  } else if (item === 'bug') {
     finishGame(false);
   }
 }
 
-// field.addEventListener('click', onFieldClick);//field.addEventListener('click',event => (event));
 gameBtn.addEventListener('click', () => {
   if (started) {
     stopGame();
@@ -48,7 +46,6 @@ gameBtn.addEventListener('click', () => {
     startGame();
   }
 });
-
 function startGame() {
   started = true;
   initGame();
@@ -76,7 +73,7 @@ function finishGame(win) {
     sound.playBug();
   }
   stopGameTimer();
-  sound.stopBackground();
+  sound.stopBackground();;
   gameFinishBanner.showWithText(win ? 'YOU WON 🎉' : 'YOU LOST 💩');
 }
 
@@ -119,17 +116,13 @@ function updateTimerText(time) {
   timerIndicator.innerHTML = `${minutes}:${seconds}`;
 }
 
-
 function initGame() {
   score = 0;
   gameScore.innerText = CARROT_COUNT;
-  // 벌레와 당근을 생성한뒤 field에 추가해줌
-  // console.log(fieldRect);
   gameField.init();
-}
+} 
 
 function updateScoreBoard() {
   gameScore.innerText = CARROT_COUNT - score;
 }
-
 
