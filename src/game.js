@@ -32,7 +32,7 @@ export default class Game {
       this.timer = undefined;
     }
     
-    setGameStopListeber(onGameStop) {
+    setGameStopListener(onGameStop) {
       this.onGameStop = onGameStop;
     }
 
@@ -71,7 +71,7 @@ export default class Game {
       if (!this.started) {
         return;
       }
-      if (item === 'carrot') { //matches는 css 셀렉터가 해당하는지 확인하는 것
+      if (item === 'carrot') { 
         this.score++;
         this.updateScoreBoard();
         if (this.score === this.carrotCount) {//////////
@@ -104,7 +104,7 @@ startGameTimer() {
   this.updateTimerText(remainingTimeSec);
   this.timer = setInterval(() => {
     if (remainingTimeSec <= 0) {
-      clearInterval(this.timer);
+      clearInterval(timer);
       this.finish(this.carrotCount === this.score);
       return;
     }
