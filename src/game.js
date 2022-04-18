@@ -119,7 +119,7 @@ stopGameTimer() {
 updateTimerText(time) {
   const minutes = Math.floor(time / 60);
   const seconds = time % 60;
-  this.gameTimer.innerText = `${minutes}:${seconds}`;
+  this.timerIndicator.innerHTML = `${minutes}:${seconds}`;
 }
 
 initGame() {
