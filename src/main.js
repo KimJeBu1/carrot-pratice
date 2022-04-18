@@ -13,10 +13,10 @@ game.setGameStopListener((reason)=> {
       message = 'Replay❓';
       break;
     case 'win':
-      message = 'YOU WON';
+      message = 'YOU WON😍';
       break;
     case 'lose':
-      message = 'YOU LOST';
+      message = 'YOU LOST😱';
       break;
       default:
         throw new Error('not valid reason');

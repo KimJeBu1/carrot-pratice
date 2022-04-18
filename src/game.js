@@ -3,9 +3,6 @@
 import Field from './field.js';
 import * as sound from './sound.js';
 
-let score = 0;
-let timer = undefined;
-
 export default class Game {
     constructor(gameDuration, carrotCount, bugCount) {
       this.gameDuration = gameDuration;
@@ -104,7 +101,7 @@ startGameTimer() {
   this.updateTimerText(remainingTimeSec);
   this.timer = setInterval(() => {
     if (remainingTimeSec <= 0) {
-      clearInterval(timer);
+      clearInterval(this.timer);
       this.finish(this.carrotCount === this.score);
       return;
     }
